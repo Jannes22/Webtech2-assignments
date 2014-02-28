@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Opdracht1 jannes</title>
+	<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script> 
+	<style type="text/css">
+
+	#bol1 {
+		width: 20px;
+		height: 20px;
+		border-radius: 50%;
+		background-color: red;
+		position: absolute;
+		transition: -webkit-transform 1s;
+
+	}
+	#bol2 {
+		width: 20px;
+		height: 20px;
+		border-radius: 50%;
+		background-color: green;
+		position: absolute;
+		transition: -webkit-transform 1s;
+	}
+	#bol3 {
+		width: 20px;
+		height: 20px;
+		border-radius: 50%;
+		background-color: yellow;
+		position: absolute;
+		transition: -webkit-transform 1s;
+	}
+	.slide1{
+		-webkit-transform: translateX(100px);
+	}
+	.slide2{
+		-webkit-transform: translateY(100px);
+	}
+	.slide3{
+		-webkit-transform: translateX(100px) translateY(100px);
+	}
+
+
+
+  	</style>
+
+</head>
+<body>
+	<div id="bol1"></div>
+	<div id="bol2"></div>
+	<div id="bol3"></div>
+
+	<script>
+	$('#bol3').click(function() {
+		$(bol1).addClass("slide1");
+		$(bol2).addClass("slide2");
+		$(bol3).addClass("slide3");
+	});
+</script>
+	
+</body>
+</html>
