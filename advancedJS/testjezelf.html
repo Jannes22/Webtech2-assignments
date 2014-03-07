@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Testjezelf week 3</title>
+	<link rel="stylesheet" href="testjezelf.css">
+</head>
+<body>
+	<div class="container">
+		<h1>IMDo app</h1>
+		<ul>
+			<li id="todo-item1">Testjezelf 3 afwerken</li>
+			<li id="todo-item2">Interview project 2</li>
+			<li id="todo-item3">Kamer opruimen</li>
+			<li id="todo-item4">Artikel engels zoeken</li>
+		</ul>
+	</div>
+
+	<script>
+
+
+	// FRAMEWORK
+
+	//wrapper element
+	var IMDelement = function(element)
+	{
+		this.element = element;
+		this.isArray = (element.length > 1) ? true : false;
+	}
+
+	IMDelement.prototype.color = function(p_color)
+	{
+		if(this.isArray)
+		{
+			for(var i=0, l=this.element.length; i<l; i++)
+			{
+				this.element[i].style['color'] = p_color;
+			}
+		}
+		else
+		{
+			this.element.style['color'] = p_color;
+		}
+
+		return this.element;
+		
+	}
+	/*IMDelement.prototype.click = function(action)
+	{
+		this.action = 
+		this.isArray = (element.length > 1) ? true : false;
+	}*/
+	IMDelement.prototype.addClass = function(classname)
+	{
+		if(this.isArray)
+		{
+			for(var i=0, l=this.element.length; i<l; i++)
+			{
+				this.element[i].className = classname;
+			}
+		}
+		else
+		{
+			this.element.className = classname;
+		}
+
+		return this.element;
+	}
+
+	IMDelement.prototype.click = function(action)
+	{
+
+			for(var i=0, l=this.element.length; i<l; i++)
+			{
+				this.element[i].addEventListener('click', action);
+			}
+
+	}
+
+	var $ = function(p_element) {
+	if (typeof (p_element) == "object") {
+		return new IMDelement(p_element);
+	}
+
+	
+		var firstCharacter = p_element.charAt(0);
+		var result;
+		
+		switch(firstCharacter)
+		{
+			case "#":
+				var idToSelect = p_element.substring(1, p_element.length);
+				var element = document.getElementById(idToSelect);
+				var result = new IMDelement(element);
+			break;
+
+			case ".":
+				var classToSelect = p_element.substring(1, p_element.length); 
+				var elements = document.getElementsByClassName(classToSelect);
+				var result = new IMDelement(elements);
+			break;
+
+			default: 
+				var tag = document.getElementsByTagName(p_element);
+				var result = new IMDelement(tag);
+				console.log(tag);
+			break;
+		}
+
+		return result;
+	}
+
+	//EIGEN CODE
+	//$("li").color("red");
+	//$("li").addClass("done");
+
+	$("li").click(function()
+	{
+		$(this).addClass("done");
+	});
+
+	
+	</script>
+
+</body>
+</html>
